@@ -70,7 +70,6 @@ sudo systemctl enable kubelet
 
 echo "waiting for api server to set up"
 
-apiup=false
 max=10
 for (( i=0; i <= $max; ++i ))
 do
@@ -82,13 +81,6 @@ do
    fi
    sleep 30 
 done
-
-if [ "$apiup" = true ]; then
-   printf "\nApi is up\n"
-else 
-   printf "\ncould not connect to kubernetes api"
-   exit
-fi
 
 #curl -s -H "Content-Type: application/json" -XPOST -d'{"apiVersion":"v1","kind":"Namespace","metadata":{"name":"kube-system"}}' "http://127.0.0.1:8080/api/v1/namespaces"
 
