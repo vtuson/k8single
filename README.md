@@ -18,3 +18,14 @@ This might come useful to debug issues with the set up. To execute commands in b
 ```kubectl exec busybox -- [command]
 ```
 
+# Kubeadm
+It is now much simpler to set up a master node with kubeadm. I have pushed a new script that intalls the depencies for 16.04 and runs kubeamd. at the moment it is used weave for networking, but you can easily change this.
+
+docs for kubeadm are [here](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/)
+
+```git clone https://github.com/vtuson/k8single.git k8 ; 
+cd k8;
+./kubeform_adm.sh
+kubectl get no -w   --> wait until the master node is ready
+kubectl get po --all-namespaces --> check that all pods have come up ok
+```
